@@ -10,7 +10,8 @@ app.get('/', function(request, response) {
 
 app.listen(app.get('port'), function() {
   console.log("Node app is running at localhost:" + app.get('port'))
-})
+});
+
 /*var server = http.createServer(function(req, res) {
 	res.writeHead(200, {'Content-Type': 'text/html'});
 	res.send('index.html');
