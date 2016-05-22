@@ -83,6 +83,29 @@ td {
   width: 240px;
 }
 
+thead tr th:last-child {
+  text-align: right;
+} 
+
+.delete-cell {
+  text-align: right;
+
+  button {
+
+    border-radius: 6px;
+    border: none;
+    height: 32px;
+    width: 32px;
+    padding-bottom: 21px;
+    background-color: #d9534f;
+    color: #FFF;
+
+    &:hover {
+      background-color: #c9302c;
+    }
+  }
+} 
+
 thead tr th {
   border-bottom: 2px solid #ddd;
 }
