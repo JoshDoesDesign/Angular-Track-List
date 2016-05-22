@@ -7,6 +7,7 @@
  * # MainCtrl
  * Controller of the angularAppPlaylistApp
  */
+
 var app = angular.module('angularAppPlaylistApp', []);
 
 app.controller('MainCtrl', function ($scope) {
