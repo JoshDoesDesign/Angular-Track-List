@@ -69,15 +69,14 @@ app.controller('MainCtrl', function ($scope) {
 
 		/* Reset Inputs On Click */
 		$scope.trackName = '';	
-		$scope.trackArtist = '';
-	};	
+		$scope.trackArtist = '';	
+  	}
 
-	/* Remove Track From List Based on Index*/
+  	/* Remove Track From List Based on Index*/
 
 	$scope.removeTrack = function(index) {
     	$scope.items.splice(index, 1);
-    }	
-  }
+    }
 });
 
 
