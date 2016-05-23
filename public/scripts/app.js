@@ -75,7 +75,26 @@ app.controller('MainCtrl', function ($scope) {
   	/* Remove Track From List Based on Index*/
 
 	$scope.removeTrack = function(index) {
-    	$scope.items.splice(index, 1);
+
+    	var genreType = $('#genreList').val();
+
+		switch(genreType) {
+		case 'rock':
+			$scope.rockList.splice(index, 1);
+			break;
+		case 'hiphop':
+			$scope.hiphopList.splice(index, 1);
+			break;	
+		case 'country':
+			$scope.countryList.splice(index, 1);
+			break;
+		case 'edm':
+			$scope.edmList.splice(index, 1);
+			break;	
+		case 'randb':
+			$scope.randbList.splice(index, 1);	
+			break;						
+		}
     }
 });
 
