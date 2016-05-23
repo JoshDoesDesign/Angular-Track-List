@@ -77,7 +77,10 @@
             <td>{{ track.name }}</td>
             <td>{{ track.artist }}</td>
             <td>{{ track.bpm }}</td>
-            <td class="delete-cell"><button class="btn btn-danger">X</button></td>
+            
+            <td class="delete-cell">
+              <button class="btn btn-danger" ng-click="removeTrack($index)">x</button>
+            </td>
           </tr>
         </tbody>
       </table>

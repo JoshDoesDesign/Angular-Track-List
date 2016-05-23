@@ -71,7 +71,16 @@ app.controller('MainCtrl', function ($scope) {
 		$scope.trackName = '';	
 		$scope.trackArtist = '';
 	};	
+
+	/* Remove Track From List Based on Index*/
+
+	$scope.removeTrack = function(index) {
+    	$scope.items.splice(index, 1);
+    }	
+  }
 });
+
+
 
 
 
