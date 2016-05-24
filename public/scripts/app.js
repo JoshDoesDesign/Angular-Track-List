@@ -1,3 +1,4 @@
+
 'use strict';
 
 /**
@@ -8,9 +9,13 @@
  * Controller of the angularAppPlaylistApp
  */
 
-var app = angular.module('angularAppPlaylistApp', []);
+var app = angular.module('angularAppPlaylistApp', ['LocalStorageModule']);
 
-app.controller('MainCtrl', function ($scope) {
+app.config(['localStorageServiceProvider', function(localStorageServiceProvider) {
+  localStorageServiceProvider.setPrefix('ls');
+}]);
+
+app.controller('MainCtrl', function ($scope, $window, $log, localStorageService) {
 
 	/* Default Filter */
 
@@ -20,9 +25,13 @@ app.controller('MainCtrl', function ($scope) {
 
 	/* Initialized Data On Page Load */
 
-	$scope.rockList = [
-		{name: 'Enter Name Here', artist: 'Enter Artist Here', bpm: 100}
-	];
+	var rockList = localStorageService.get('rockList');
+
+	$scope.rockList = rockList || [];
+
+	$scope.$watch('rockList', function () {
+  		localStorageService.set('rockList', $scope.rockList);
+	}, true);
 
 	$scope.hiphopList = [
 		{name: 'Enter Name Here', artist: 'Enter Artist Here', bpm: 100}
@@ -81,6 +90,7 @@ app.controller('MainCtrl', function ($scope) {
 		switch(genreType) {
 		case 'rock':
 			$scope.rockList.splice(index, 1);
+			// $window.localStorage.removeItem(key);
 			break;
 		case 'hiphop':
 			$scope.hiphopList.splice(index, 1);
@@ -96,9 +106,13 @@ app.controller('MainCtrl', function ($scope) {
 			break;						
 		}
     }
+
+    $scope.clearList = function() {
+    	console.log('cleared'); 
+    	$log.('cleared');
+    	return localStorageService.clearAll();
+    }
 });
-
-
 
 
 

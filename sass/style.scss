@@ -1,8 +1,4 @@
 
-// bower:scss
-// @import "font-awesome/scss/font-awesome.scss";
-// endbower
-
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -36,28 +32,6 @@ body {
   }
 }
 
-/* Custom page footer */
-.footer {
-  padding-top: 19px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
-}
-
-.container-narrow > hr {
-  margin: 30px 0;
-}
-
-/* Main marketing message and sign up button */
-.jumbotron {
-  text-align: center;
-  border-bottom: 1px solid #e5e5e5;
-
-  .btn {
-    font-size: 21px;
-    padding: 14px 24px;
-  }
-}
-
 /* Supporting marketing content */
 .marketing {
   margin: 40px 0;
@@ -65,6 +39,19 @@ body {
   p + h4 {
     margin-top: 28px;
   }
+}
+
+/* FORM STYLING */
+
+.container form {
+  float: left;
+}
+
+.btn.btn-warning {
+  width: 90px;
+  text-transform: uppercase;
+  margin-left: 10px;
+  font-size: 11px;
 }
 
 /* LIST STYLING */
@@ -143,7 +130,7 @@ a:hover {
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   .container {
-    max-width: 730px;
+    max-width: 745px;
   }
 
   /* Remove the padding we set earlier */

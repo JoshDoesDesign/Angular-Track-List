@@ -9,16 +9,14 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/style.css">
-
 </head>
 
 <body ng-controller="MainCtrl">
 
-    <div class="jumbotron">
+  <div class="jumbotron"></div>
 
-    </div>
-
-    <form class="container" ng-submit="addTrack()">
+  <div class="container">
+    <form ng-submit="addTrack()">
       <span class="form-title">Artist:</span>
       <input type="text" class="trackartist-form" ng-model="trackArtist">
       <span class="form-title track-title">Track:</span>
@@ -38,132 +36,136 @@
       <input type="submit" id="addTrack"  value="Add Song" class="btn btn-primary addTrackBtn" ng-model="newTrack"></button>
     </form>
 
-    <div class="container list-container">
-      <h3 class="list-title">Rock</h3>
+    <button class="btn btn-warning" ng-click="clearList">Clear List</button>
+  </div>
+  
+  <div class="container list-container">
+    <h3 class="list-title">Rock</h3>
 
-      <table class="table table-striped">
-        <thead>
+    <table class="table table-striped">
+      <thead>
+        <th>
+          <a href="#" ng-click="sortType = 'name'; sortReverse = !sortReverse">
+              Name 
+              <span ng-show="sortType == 'name' && !sortReverse" class="fa fa-caret-down"></span>
+              <span ng-show="sortType == 'name' && sortReverse" class="fa fa-caret-up"></span>
+          </a>
+        </th>  
+
           <th>
-            <a href="#" ng-click="sortType = 'name'; sortReverse = !sortReverse">
-                Name 
-                <span ng-show="sortType == 'name' && !sortReverse" class="fa fa-caret-down"></span>
-                <span ng-show="sortType == 'name' && sortReverse" class="fa fa-caret-up"></span>
+            <a href="#" ng-click="sortType = 'artist'; sortReverse = !sortReverse">
+              Artist 
+              <span ng-show="sortType == 'artist' && !sortReverse" class="fa fa-caret-down"></span>
+              <span ng-show="sortType == 'artist' && sortReverse" class="fa fa-caret-up"></span>
             </a>
           </th>  
 
-            <th>
-              <a href="#" ng-click="sortType = 'artist'; sortReverse = !sortReverse">
-                Artist 
-                <span ng-show="sortType == 'artist' && !sortReverse" class="fa fa-caret-down"></span>
-                <span ng-show="sortType == 'artist' && sortReverse" class="fa fa-caret-up"></span>
-              </a>
-            </th>  
+          <th>
+            <a href="#" ng-click="sortType = 'bpm'; sortReverse = !sortReverse">
+              BPM 
+              <span ng-show="sortType == 'bpm' && !sortReverse" class="fa fa-caret-down"></span>
+              <span ng-show="sortType == 'bpm' && sortReverse" class="fa fa-caret-up"></span>
+            </a>
+          </th>
 
-            <th>
-              <a href="#" ng-click="sortType = 'bpm'; sortReverse = !sortReverse">
-                BPM 
-                <span ng-show="sortType == 'bpm' && !sortReverse" class="fa fa-caret-down"></span>
-                <span ng-show="sortType == 'bpm' && sortReverse" class="fa fa-caret-up"></span>
-              </a>
-            </th>
+          <th>Delete Track</th>
 
-            <th>Delete Track</th>
+        </thead>  
+      </thead>
 
-          </thead>  
-        </thead>
+      <tbody>
+        <tr ng-repeat="track in rockList | orderBy:sortType:sortReverse">
+          <td>{{ track.name }}</td>
+          <td>{{ track.artist }}</td>
+          <td>{{ track.bpm }}</td>
 
-        <tbody>
-          <tr ng-repeat="track in rockList | orderBy:sortType:sortReverse">
+          <td class="delete-cell">
+            <button class="btn btn-danger" ng-click="removeTrack($index)">x</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="container list-container">
+    <h3 class="list-title">Hip Hop</h3>
+
+    <table class="table table-striped">
+      <thead>
+        <th>Name</th>          
+        <th>Artist</th>          
+        <th>BPM</th>          
+      </thead>
+      <tbody>
+        <tr ng-repeat="track in hiphopList">
+          <td>{{ track.name }}</td>
+          <td>{{ track.artist }}</td>
+          <td>{{ track.bpm }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="container list-container">
+    <h3 class="list-title">Country</h3>
+
+    <table class="table table-striped">
+      <thead>
+        <th>Name</th>          
+        <th>Artist</th>          
+        <th>Label</th>          
+      </thead>
+      <tbody>
+        <tr ng-repeat="track in countryList">
+          <td>{{ track.name }}</td>
+          <td>{{ track.artist }}</td>
+          <td>{{ track.label }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="container list-container">
+    <h3 class="list-title">EDM</h3>
+
+    <table class="table table-striped">
+      <thead>
+        <th>Name</th>          
+        <th>Artist</th>          
+        <th>BPM</th>          
+      </thead>
+      <tbody>
+          <tr ng-repeat="track in edmList">
             <td>{{ track.name }}</td>
             <td>{{ track.artist }}</td>
             <td>{{ track.bpm }}</td>
-            
-            <td class="delete-cell">
-              <button class="btn btn-danger" ng-click="removeTrack($index)">x</button>
-            </td>
           </tr>
-        </tbody>
-      </table>
-    </div>
+      </tbody>
+    </table>
+  </div>
 
-    <div class="container list-container">
-      <h3 class="list-title">Hip Hop</h3>
+  <div class="container list-container">
+    <h3 class="list-title">R&amp;B</h3>
 
-      <table class="table table-striped">
-        <thead>
-          <th>Name</th>          
-          <th>Artist</th>          
-          <th>BPM</th>          
-        </thead>
-        <tbody>
-          <tr ng-repeat="track in hiphopList">
-            <td>{{ track.name }}</td>
-            <td>{{ track.artist }}</td>
-            <td>{{ track.bpm }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="container list-container">
-      <h3 class="list-title">Country</h3>
-
-      <table class="table table-striped">
-        <thead>
-          <th>Name</th>          
-          <th>Artist</th>          
-          <th>Label</th>          
-        </thead>
-        <tbody>
-          <tr ng-repeat="track in countryList">
-            <td>{{ track.name }}</td>
-            <td>{{ track.artist }}</td>
-            <td>{{ track.label }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="container list-container">
-      <h3 class="list-title">EDM</h3>
-
-      <table class="table table-striped">
-        <thead>
-          <th>Name</th>          
-          <th>Artist</th>          
-          <th>BPM</th>          
-        </thead>
-        <tbody>
-            <tr ng-repeat="track in edmList">
-              <td>{{ track.name }}</td>
-              <td>{{ track.artist }}</td>
-              <td>{{ track.bpm }}</td>
-            </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="container list-container">
-      <h3 class="list-title">R&amp;B</h3>
-
-      <table class="table table-striped">
-        <thead>
-          <th>Name</th>          
-          <th>Artist</th>          
-          <th>Label</th>          
-        </thead>
-        <tbody>
-          <tr ng-repeat="track in randbList">
-            <td>{{ track.name }}</td>
-            <td>{{ track.artist }}</td>
-            <td>{{ track.label }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>    
+    <table class="table table-striped">
+      <thead>
+        <th>Name</th>          
+        <th>Artist</th>          
+        <th>Label</th>          
+      </thead>
+      <tbody>
+        <tr ng-repeat="track in randbList">
+          <td>{{ track.name }}</td>
+          <td>{{ track.artist }}</td>
+          <td>{{ track.label }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>    
   
   <script src="scripts/jquery.min.js"></script>
   <script src="scripts/angular.min.js"></script>
+  <script src="scripts/angular-local-storage.js"></script>
 
   <script src="scripts/app.js"></script>
 </body>
