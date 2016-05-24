@@ -107,10 +107,7 @@ app.controller('MainCtrl', function ($scope, $window, localStorageService) {
 		}
     }
 
-    $scope.clearList = function() {
-    	console.log('cleared'); 
-    	return localStorageService.clearAll();
-    }
+    $scope.clearAll = localStorageService.clearAll;
 });
 
 
