@@ -15,7 +15,7 @@ app.config(['localStorageServiceProvider', function(localStorageServiceProvider)
   localStorageServiceProvider.setPrefix('ls');
 }]);
 
-app.controller('MainCtrl', function ($scope, $window, $log, localStorageService) {
+app.controller('MainCtrl', function ($scope, $window, localStorageService) {
 
 	/* Default Filter */
 
@@ -109,7 +109,6 @@ app.controller('MainCtrl', function ($scope, $window, $log, localStorageService)
 
     $scope.clearList = function() {
     	console.log('cleared'); 
-    	$log.('cleared');
     	return localStorageService.clearAll();
     }
 });
