@@ -33,21 +33,13 @@ app.controller('MainCtrl', function ($scope, $window, localStorageService) {
   		localStorageService.set('rockList', $scope.rockList);
 	}, true);
 
-	$scope.hiphopList = [
-		{name: 'Enter Name Here', artist: 'Enter Artist Here', bpm: 100}
-	];
+	$scope.hiphopList = [];
 
-	$scope.countryList = [
-		{name: 'Enter Name Here', artist: 'Enter Artist Here', label: 'Enter Label Here'}
-	];
+	$scope.countryList = [];
 
-	$scope.edmList = [
-		{name: 'Enter Name Here', artist: 'Enter Artist Here', bpm: 128}
-	];	
+	$scope.edmList = [];	
 
-	$scope.randbList = [
-		{name: 'Enter Name Here', artist: 'Enter Artist Here', label: 'Enter Label Here'}
-	];
+	$scope.randbList = [];
 
 	/* Append Track Based On Genre */
 
