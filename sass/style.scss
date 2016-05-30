@@ -9,7 +9,7 @@
 body {
   padding: 0 0 50px;
 } 
-
+ 
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
 .marketing,
@@ -23,6 +23,7 @@ body {
 .jumbotron h2 {
   text-align: center;
   color: #8C8C8C;
+  font-weight: normal;
 }
 
 .header {
