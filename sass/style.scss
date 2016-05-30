@@ -3,7 +3,7 @@
   margin: 0.2em 0;
   background: #ccc;
   color: #000;
-  padding: 0.2em 0;
+  padding: 0.2em 0; 
 }
 
 body {
@@ -15,10 +15,16 @@ body {
 .marketing,
 .footer {
   padding-left: 15px;
-  padding-right: 15px;
+  padding-right: 15px; 
 }
 
 /* Custom page header */
+
+.jumbotron h2 {
+  text-align: center;
+  color: #8C8C8C;
+}
+
 .header {
   border-bottom: 1px solid #e5e5e5;
   margin-bottom: 10px;
