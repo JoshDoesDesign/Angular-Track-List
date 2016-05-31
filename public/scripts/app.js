@@ -33,13 +33,37 @@ app.controller('MainCtrl', function ($scope, $window, localStorageService) {
   		localStorageService.set('rockList', $scope.rockList);
 	}, true);
 
-	$scope.hiphopList = [];
+	var hiphopList = localStorageService.get('hiphopList');
 
-	$scope.countryList = [];
+	$scope.hiphopList = hiphopList || [];
 
-	$scope.edmList = [];	
+	$scope.$watch('hiphopList', function () {
+  		localStorageService.set('hiphopList', $scope.hiphopList);
+	}, true);
 
-	$scope.randbList = [];
+	var countryList = localStorageService.get('countryList');	
+
+	$scope.countryList = countryList || [];
+
+	$scope.$watch('countryList', function () {
+  		localStorageService.set('countryList', $scope.countryList);
+	}, true);
+
+	var edmList = localStorageService.get('edmList');		
+
+	$scope.edmList = edmList || [];	
+
+	$scope.$watch('edmList', function () {
+  		localStorageService.set('edmList', $scope.edmList);
+	}, true);
+
+	var randbList = localStorageService.get('randbList');		
+
+	$scope.randbList = randbList || [];
+
+	$scope.$watch('randbList', function () {
+  		localStorageService.set('randbList', $scope.randbList);
+	}, true);
 
 	/* Append Track Based On Genre */
 
